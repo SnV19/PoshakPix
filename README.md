@@ -1,17 +1,14 @@
 
-# FashionStudio AI
+# PoshakPix
 
 ## Garment Segmentation, Background Generation and Visual Consistency Analysis
 
-**Project ID:** HSR-AIML-055
-
 **Domain:** Digital Image Processing and Computer Vision
-
 **Industry Reference:** Neuropixel.ai
 
 ## 1. Overview
 
-FashionStudio AI is a fashion product image processing application developed using Python, OpenCV and Streamlit.
+PoshakPix is a fashion product image processing application developed using Python, OpenCV and Streamlit.
 
 The application extracts garments from fashion product images, refines segmentation masks through morphological operations, replaces backgrounds and evaluates garment consistency.
 
@@ -151,14 +148,6 @@ Measures similarity between colour distributions.
 
 Measures colour difference in CIE Lab space.
 
-### IoU
-
-Measures overlap between predicted and ground-truth segmentation masks.
-
-### Dice Coefficient
-
-Measures segmentation overlap using the Dice formula.
-
 ### Runtime
 
 Measures computational execution time.
@@ -166,7 +155,7 @@ Measures computational execution time.
 ## 9. Project Structure
 
 ```text
-FashionStudio-AI/
+PoshakPix/
 ├── app.py
 ├── requirements.txt
 ├── README.md
@@ -187,7 +176,7 @@ FashionStudio-AI/
 - Pretrained models may occasionally produce inaccurate boundaries.
 - Background replacement does not generate new garment designs.
 - CLIP similarity is semantic and does not guarantee exact garment identity.
-- IoU and Dice require ground-truth masks.
+
 
 ## 11. Future Scope
 
@@ -199,4 +188,4 @@ FashionStudio-AI/
 
 ## 12. Conclusion
 
-FashionStudio AI demonstrates how classical Digital Image Processing techniques and pretrained computer vision models can be integrated into a practical fashion image processing application.
+PoshakPix demonstrates how classical Digital Image Processing techniques and pretrained computer vision models can be integrated into a practical fashion image processing application.
