@@ -1,0 +1,5 @@
+Metric,Value
+SSIM,0.9207
+MAE,0.708
+Histogram Similarity,0.9761
+Mean Delta E 76,0.3343
