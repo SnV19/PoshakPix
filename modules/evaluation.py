@@ -4,38 +4,6 @@ import numpy as np
 import pandas as pd
 import time
 
-
-def calculate_iou(predicted_mask, ground_truth):
-    """Calculate Intersection over Union."""
-
-    pred = predicted_mask > 127
-    truth = ground_truth > 127
-
-    intersection = np.logical_and(pred, truth).sum()
-    union = np.logical_or(pred, truth).sum()
-
-    if union == 0:
-        return 1.0
-
-    return float(intersection / union)
-
-
-def calculate_dice(predicted_mask, ground_truth):
-    """Calculate Dice coefficient."""
-
-    pred = predicted_mask > 127
-    truth = ground_truth > 127
-
-    intersection = np.logical_and(pred, truth).sum()
-
-    denominator = pred.sum() + truth.sum()
-
-    if denominator == 0:
-        return 1.0
-
-    return float(2 * intersection / denominator)
-
-
 def calculate_foreground_percentage(mask):
     """Calculate foreground percentage."""
 
@@ -73,14 +41,11 @@ def save_results_csv(dataframe, filepath):
 
 def compare_segmentation_methods(
     grabcut_mask,
-    rembg_mask,
-    ground_truth=None
+    rembg_mask
 ):
     """
-    Compare two segmentation masks.
-
-    IoU and Dice are calculated only when
-    a ground-truth mask is supplied.
+    Compare two segmentation masks using
+    foreground percentage.
     """
 
     results = []
@@ -98,21 +63,6 @@ def compare_segmentation_methods(
                 round(calculate_foreground_percentage(mask), 2)
         }
 
-        if ground_truth is not None:
-
-            row["IoU"] = round(
-                calculate_iou(mask, ground_truth), 4
-            )
-
-            row["Dice"] = round(
-                calculate_dice(mask, ground_truth), 4
-            )
-
-        else:
-
-            row["IoU"] = "Not available"
-            row["Dice"] = "Not available"
-
         results.append(row)
 
     return pd.DataFrame(results)
@@ -125,3 +75,4 @@ def create_experiment_summary(experiment_name, metrics):
         "Experiment": experiment_name,
         **metrics
     }
+
